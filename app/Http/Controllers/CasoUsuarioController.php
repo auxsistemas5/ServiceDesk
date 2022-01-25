@@ -20,6 +20,7 @@ class CasoUsuarioController extends Controller
         $area = DB::table('areas_hospital')->get();
         $daños = Dano::where('AREA', 'TECNOLOGÍA')->get();
         return view('home.create',['area' => $area, 'daños' => $daños]);
+        date_default_timezone_set('America/Bogota');
     }
 
     public function store(Request $request)
@@ -44,6 +45,7 @@ class CasoUsuarioController extends Controller
         
         if($saved){
             Session::flash('creado', 'Caso Creado con exito');    
+            date_default_timezone_set('America/Bogota');
             return redirect('/dash/mesaDeAyuda');
         }
         
@@ -52,6 +54,7 @@ class CasoUsuarioController extends Controller
 
     public function miscasos(){
         if(auth()->user()){
+            date_default_timezone_set('America/Bogota');
             if(auth()->user()->admin == "No"){
                 $micaso = Caso::where('SOLICITANTE', auth()->user()->name)->where('ESTADO', 'Abierto')->orwhere('ESTADO', 'En Desarrollo')->get();
                 $contador = Caso::where('SOLICITANTE', auth()->user()->name)->where('ESTADO', 'Abierto')->orwhere('ESTADO', 'En Desarrollo')->get()->count();
@@ -64,6 +67,7 @@ class CasoUsuarioController extends Controller
 
     public function miscasoscerrados(){
         $caso = Caso::where('SOLICITANTE', auth()->user()->name)->where('ESTADO', 'Cerrado')->get();
+        date_default_timezone_set('America/Bogota');
         return view('home.miscasoscerrados',['caso' => $caso]);
     }
 

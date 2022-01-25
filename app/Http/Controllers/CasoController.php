@@ -9,6 +9,8 @@ use App\Models\Dano;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
+use App\Mail\NotificacionMailable;
+use Illuminate\Support\Facades\Mail;
 
 class CasoController extends Controller
 {
@@ -178,6 +180,45 @@ class CasoController extends Controller
         }
     }
 
+    public function reasignar($id){
+        $area = DB::table('areas_hospital')->get();
+        $daños = DB::table('danos')->get();
+        //se trae todos los usuarios que tenga rol de administrador
+        $users = User::where('type_rol',1)->where('admin', auth()->user()->admin)->get();
+        $caso = Caso::find($id);
+        date_default_timezone_set('America/Bogota');
+
+        if($caso->IMAGENEVIDENCIA != NULL){
+
+            $content = Storage::get($caso->IMAGENEVIDENCIA);
+        }
+        
+        return view('casos.reasignar', ['caso' => $caso, 'users' => $users , 'area' => $area, 'daños' => $daños]);
+    }
+
+    public function asignacion(Request $request, $id){
+        $caso = Caso::find($id);
+
+        $caso->PRIORIDAD = $request->get('PRIORIDAD');
+        $caso->DESCRIPTION = $request->get('DESCRIPTION');
+        $caso->AREA = $request->get('AREA');
+        $caso->AREADESTINO = $request->get('AREADESTINO');
+        $caso->TIPODAÑO = $request->get('TIPODAÑO');
+        $caso->USUARIOASIGNADO = $request->get('USUARIOASIGNADO');
+        $caso->ESTADO = $request->get('ESTADO');
+
+        date_default_timezone_set('America/Bogota');
+
+        //$caso->IMAGENEVIDENCIA = $request->file('IMAGENEVIDENCIA')->store('public');
+
+        $saved = $caso->save();
+        
+        if($saved){
+            Session::flash('creado', 'Caso Asignado con exito');    
+            return redirect('/dash/casos');
+        }
+    }
+
     public function cerrarCaso(Request $request, $id)
     {
         //busca el id del objeto y luego modifica su estado a cerrado para salir de la lista de casos abiertos
@@ -185,10 +226,19 @@ class CasoController extends Controller
 
         $caso->ESTADO = $request->get('ESTADO');
         $caso->RESPUESTAUSUARIOASIGNADO = $request->get('RESPUESTAUSUARIOASIGNADO');
+        date_default_timezone_set('America/Bogota');
 
         $caso->save();
+        
+        //saca el email del usuario que publico el caso para enviarle la respuesta
+        $model = User::where('name', $caso->SOLICITANTE)->get();
+        
+        $email = new NotificacionMailable;
+        Mail::to($model[0]->email)->send($email);
 
         return redirect('/dash/casos');
+        
+
     }
 
     public function casoscerrados(){
@@ -196,11 +246,13 @@ class CasoController extends Controller
         $casoscerrados = Caso::where('ESTADO','Cerrado')->where('AREADESTINO',auth()->user()->admin)->orderBy('updated_at', 'DESC')->get();
         $contador = Caso::where('ESTADO','Cerrado')->where('AREADESTINO',auth()->user()->admin)->orderBy('updated_at', 'DESC')->get()->count();
         return view('casos.casoscerrados', ['casoscerrados' => $casoscerrados, 'contador' => $contador]);
+        date_default_timezone_set('America/Bogota');
     }
 
     public function miscasoscreados(){
         $caso = CASO::where('SOLICITANTE', auth()->user()->name)->get();
         return view('casos.miscasoscreados', ['caso' => $caso]);
+        date_default_timezone_set('America/Bogota');
     }
 
     /**
@@ -216,4 +268,5 @@ class CasoController extends Controller
         return redirect('casos.administrarCasos');
     }
 
+    
 }

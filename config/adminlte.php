@@ -289,6 +289,11 @@ return [
             'text' => 'Tipo de Daños',
             'url'  => '/dash/danos',
             'icon' => 'fas fa-hammer',
+        ],
+        [
+            'text' => 'Reporte',
+            'url' => '/estadisticas/ver',
+            'icon' => 'fas fa-chart-area'
         ]
        
         

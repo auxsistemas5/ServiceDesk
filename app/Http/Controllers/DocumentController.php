@@ -90,11 +90,13 @@ class DocumentController extends Controller
     }
 
     public function downloadPDF(){
-        $casos = Caso::all();
+        $fechaI = "2022-01-01";
+        $final = "2022-01-31";
+        $casos = Caso::where('ESTADO','Cerrado')->whereBetween('updated_at',[$fechaI,$final])->get();
         $pdf = PDF::loadView('document.index', compact('casos'));
 
         return $pdf->download('casosDelMes.pdf');
-        return redirect('/dash/casos');
+        return redirect('/estadisticas/ver');
     }
 }
 

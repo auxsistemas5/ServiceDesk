@@ -33,13 +33,19 @@
                             $date2 = new DateTime($caso->updated_at);
                             $diff = $date1->diff($date2);
                             $total = $total+1;
-                            $resultado = $resultado + $diff->m
+                            $resultado = $diff->i;
                             ?>
-                        <td><?php echo $diff->m .' Minutos '. $diff->s. ' Segundos' ?></td>
+                        <td><?php echo $diff->i.' Minutos '. $diff->s. ' Segundos' ?></td>
                     </tr>
                 @endforeach
                         
-                        <?php $res = $resultado / $total ?>
+                        <?php
+                            if($resultado != 0 ){
+                                $res = $resultado / $total ;
+                            }else{
+                                $res = 0;
+                            }
+                        ?>
                         <td><?php ?></td>
                     
             </tbody>
@@ -48,8 +54,9 @@
     <div class="">
         <p>Este es el reporte de estadisticas en la mesa de ayuda referente a los tickets de soporte por el equipo de sistemas</p>
         <p>El numero de tickets Cerrados estes mes son: {{$total}}</p><b></b>
-        <p>El tiempo estimado de respuesta promedio es: <?php echo $res ?></p>
+        <p>El tiempo estimado de respuesta promedio es: <?php echo $res ?> Minutos</p>
     </div>
+
 </div>
 <style>
     #tab{
@@ -75,8 +82,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
 <link rel-"stylesheet" href-"/css/admin custom.css">
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"defer></script>
-   
-  
+
+<script>
+    
+</script>
+
+
+

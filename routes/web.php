@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\NotificacionMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,10 @@ Route::get('/dash/casos/casoscerrados', 'App\Http\Controllers\CasoController@cas
 Route::get('/dash/casos/miscasoscreados', 'App\Http\Controllers\CasoController@miscasoscreados');
 
 Route::get('/dash/casos/{id}/edit/image', 'App\Http\Controllers\CasoController@image');
+Route::get('/dash/casos/{id}/reasignar/', 'App\Http\Controllers\CasoController@reasignar');
+
+Route::put('/dash/casos/miscasos/{id}/asignar', 'App\Http\Controllers\CasoController@asignacion');
+
 
 
 
@@ -93,9 +99,13 @@ Route::get('/dash/danos/create', 'App\Http\Controllers\DanoController@create');
     return view('document.index');
 });*/
 Route::resource('/reporte', 'App\Http\Controllers\DocumentController');
-Route::get('/reporte/casos', 'App\Http\Controllers\DocumentController@show');
+Route::get('/reporte/casos/', 'App\Http\Controllers\DocumentController@show');
 Route::get('/reporte/casos/exportar', 'App\Http\Controllers\DocumentController@downloadPDF');
 
+
+//ruta de estadisticas
+Route::resource('/estadisticas', 'App\Http\Controllers\EstadisticasController');
+Route::get('/estadisticas/ver', 'App\Http\Controllers\EstadisticasController@index');
 
 
 

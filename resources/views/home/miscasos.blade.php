@@ -3,7 +3,7 @@
 @section("content")
 <div class="container mt-2">
     <h3 type="" class="">
-        <b>MIS CASOS </b><span class="badge bg-secondary"> {{$contador}}</span>
+        <b>MIS CASOS </b><span class="badge bg-secondary"></span>
         </h3>
     <div class="table-responsive">
         <table id="table" id="mios" class="mt-3 table table-striped" style="width:100%">
@@ -20,25 +20,27 @@
             </thead>
             <tbody>
                 @foreach ($micaso as $micaso)
-                <tr> 
-                    <td>{{$micaso->id}}</td>
-                    <td>{{$micaso->AREA}}</td>
-                    <td>{{$micaso->DESCRIPTION}}</td>
-                    <td>{{$micaso->SOLICITANTE}}</td>
-                    @if ($micaso->PRIORIDAD == "BAJA")
-                    <td><span class="badge rounded-pill bg-success">{{$micaso->PRIORIDAD}}</span></td>
-                    @else
-                        @if ($micaso->PRIORIDAD == "MEDIA")
-                        <td><span class="badge rounded-pill bg-warning">{{$micaso->PRIORIDAD}}</span></td>
-                        
-                        @else
-                        <td><span class="badge rounded-pill bg-danger">{{$micaso->PRIORIDAD}}</span></td>
-                        
-                        @endif
+                    @if($micaso->SOLICITANTE == auth()->user()->name)
+                        <tr> 
+                            <td>{{$micaso->id}}</td>
+                            <td>{{$micaso->AREA}}</td>
+                            <td>{{$micaso->DESCRIPTION}}</td>
+                            <td>{{$micaso->SOLICITANTE}}</td>
+                            @if ($micaso->PRIORIDAD == "BAJA")
+                            <td><span class="badge rounded-pill bg-success">{{$micaso->PRIORIDAD}}</span></td>
+                            @else
+                                @if ($micaso->PRIORIDAD == "MEDIA")
+                                <td><span class="badge rounded-pill bg-warning">{{$micaso->PRIORIDAD}}</span></td>
+                                
+                                @else
+                                <td><span class="badge rounded-pill bg-danger">{{$micaso->PRIORIDAD}}</span></td>
+                                
+                                @endif
+                            @endif
+                            <td>{{$micaso->ESTADO}}</td>
+                            
+                        </tr>
                     @endif
-                    <td>{{$micaso->ESTADO}}</td>
-                    
-                </tr>
                 @endforeach
             </tbody>
         </table>

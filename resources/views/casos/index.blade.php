@@ -74,7 +74,6 @@
       </table>
    </div>
 
-   <a href="/reporte/casos/exportar" class="btn btn-secondary btn-small">EXPORTAR PDF</a> <br>
 
 @stop
 @section('content_header')
