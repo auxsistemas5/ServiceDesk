@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>MESA DE AYUDA</title>
 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/dash"><img src="https://www.hmfs.gov.co/wp-content/uploads/2021/08/LOGO-ENCABEZADOFF-8.png" width="180" height="35" alt=""></a>
+          <a class="navbar-brand" href="/dash"><img src="https://www.hmfs.gov.co/wp-content/uploads/2021/08/LOGO-ENCABEZADOFF-8.png" width="190" height="30" alt=""></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -42,7 +41,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{auth()->user()->name}}
+                          {{auth()->user()->name}}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/logout">Salir</a></li>
@@ -54,12 +53,19 @@
         </div>
       </nav>
     @yield('content')
+    
+    
+
+    
+
+    <!-- Scripts -->
+    
+    
+    
+    
+    <script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous"></script>
+    
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous"></script>
-        <script rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
-        <script rel="stylesheet" href="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js">
-        <script rel="stylesheet" href="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"defer>
 </html>
 <style>
     {

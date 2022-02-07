@@ -7,8 +7,10 @@
    </div>
 @stop
 @section('css')
+<link rel="stylesheet" href="{{asset('css/datatables.css') }}">
     <link rel-"stylesheet" href-"/css/admin custom.css">
 @stop
 @section('js')
   <script> console.log('Hi!'); </script>
+  <script src="{{ asset('js/datatables.js') }}" defer></script>
 @stop

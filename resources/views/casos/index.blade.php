@@ -18,10 +18,28 @@
         </symbol>
     </svg>
     @if (Session::has('creado'))
+      <div class="cont">
+         <div class="alert alert-success d-flex align-items-center autohide" autohide role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <div>
+             {{Session('creado')}}
+            </div>
+         </div>
+      </div>
+    @endif
+    @if (Session::has('actualizar'))
     <div class="alert alert-success d-flex align-items-center autohide" autohide role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
         <div>
-          {{Session('creado')}}
+          {{Session('actualizar')}}
+        </div>
+      </div>
+    @endif
+    @if (Session::has('cerrar'))
+    <div class="alert alert-success d-flex align-items-center autohide" autohide role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+          {{Session('cerrar')}}
         </div>
       </div>
     @endif
@@ -73,21 +91,20 @@
          </tbody>
       </table>
    </div>
-
+   
 
 @stop
 @section('content_header')
    <p>welcome to this beautiful adnin panel.</p>
 @stop
 @section('css')
-   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+  
    <link rel-"stylesheet" href-"/css/admin custom.css">
+   <link rel="stylesheet" href="{{asset('css/datatables.css') }}">
+   
 @stop
 @section('js')
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"defer></script>
+
    <script>
         $(document).ready(function() {
             $('#todos').DataTable();
@@ -95,4 +112,18 @@
 
    </script>
   <script> console.log('Hi!'); </script>
+  <script src="{{ asset('js/datatables.js') }}" defer></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+      $(document).ready(function() {
+         $(".alert").hide(3000,function(){
+               $(this).remove();//esconde las notificaciones//
+            }); 
+      });
+      
+      
+  </script>
+
 @stop

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Dano;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,7 @@ class DanoController extends Controller
         $dano->AREA = $request->get('AREA');
 
         $dano->save();
-
+        Session::flash('creado', 'Daño creado con exito');   
         return redirect('/dash/danos');
     }
 
@@ -41,7 +42,7 @@ class DanoController extends Controller
         $dano->AREA = $request->get('AREA');
 
         $dano->save();
-
+        Session::flash('actualizar', 'Daño actualizado con exito!');   
         return redirect('/dash/danos');
 
     }

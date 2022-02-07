@@ -18,7 +18,7 @@ class CasoUsuarioController extends Controller
 
     public function create(){
         $area = DB::table('areas_hospital')->get();
-        $daños = Dano::where('AREA', 'TECNOLOGÍA')->get();
+        $daños = Dano::all();
         return view('home.create',['area' => $area, 'daños' => $daños]);
         date_default_timezone_set('America/Bogota');
     }

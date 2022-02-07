@@ -36,8 +36,6 @@ Route::get('/dash/casos/miscasos', function (){
     return view('casos.miscasos');
 });
 
-
-
 Route::get('/dash/casos/casoscerrados', function (){
     return view('casos.casoscerrados');
 });
@@ -45,7 +43,6 @@ Route::get('/dash/casos/casoscerrados', function (){
 Route::get('/dash/casos/miscasoscreados', function (){
     return view('casos.miscasoscreados');
 });
-
 
 Route::get('/dash', 'App\Http\Controllers\DashboardController@index');
 
@@ -65,7 +62,9 @@ Route::get('/dash/casos/{id}/reasignar/', 'App\Http\Controllers\CasoController@r
 
 Route::put('/dash/casos/miscasos/{id}/asignar', 'App\Http\Controllers\CasoController@asignacion');
 
-
+Route::put('/dash/users/{id}/actualizar', 'App\Http\Controllers\UsuariosController@actualizarPermisos');
+Route::get('/dash/user/crearNuevo', 'App\Http\Controllers\UsuariosController@crearNuevoUsuario');
+Route::post('/dash/user/crearNuevo/new', 'App\Http\Controllers\UsuariosController@registroNuevo');
 
 
 Route::get('/dash/mesaDeAyuda', function (){
@@ -106,6 +105,8 @@ Route::get('/reporte/casos/exportar', 'App\Http\Controllers\DocumentController@d
 //ruta de estadisticas
 Route::resource('/estadisticas', 'App\Http\Controllers\EstadisticasController');
 Route::get('/estadisticas/ver', 'App\Http\Controllers\EstadisticasController@index');
+
+Route::get('/reporte/casos/exportarExcel', 'App\Http\Controllers\CasoController@excel');
 
 
 

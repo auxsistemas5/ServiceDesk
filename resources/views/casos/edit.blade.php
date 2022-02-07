@@ -101,6 +101,9 @@
             <div hidden>
             <input type="text" name="ESTADO" value="En Desarrollo">
             </div>
+            <div hidden class="">
+                <input name="RESPUESTATENCION" type="text" value="Se esta atendiendo el ticket en este momento!">
+            </div>
 
             <div class="mt-2">
                 <button class="btn btn-info text-white" type="submit">ACTUALIZAR CASO</button>

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use App\Mail\NotificacionMailable;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CasosExport;
 
 class CasoController extends Controller
 {
@@ -39,7 +41,7 @@ class CasoController extends Controller
     public function create()
     {
         $area = DB::table('areas_hospital')->get();
-        $daños = Dano::where('AREA', 'TECNOLOGÍA')->get();
+        $daños = Dano::all();
         return view('casos.create', ['area' => $area],['daños' => $daños]);
     }
 
@@ -83,7 +85,7 @@ class CasoController extends Controller
         $saved = $caso->save();
         
         if($saved){
-            Session::flash('creado', 'Caso Creado con exito');    
+            Session::flash('creado', ' Caso Creado con exito');    
             return redirect('/dash/casos');
         }
         
@@ -175,7 +177,7 @@ class CasoController extends Controller
         $saved = $caso->save();
         
         if($saved){
-            Session::flash('creado', 'Caso Asignado con exito');    
+            Session::flash('actualizar', ' Caso Asignado con exito');    
             return redirect('/dash/casos');
         }
     }
@@ -235,7 +237,7 @@ class CasoController extends Controller
         
         $email = new NotificacionMailable;
         Mail::to($model[0]->email)->send($email);
-
+        Session::flash('cerrar', 'Caso Cerrado con exito');   
         return redirect('/dash/casos');
         
 
@@ -266,6 +268,11 @@ class CasoController extends Controller
         $caso = Caso::find($id);
         $caso->delete();
         return redirect('casos.administrarCasos');
+    }
+
+    public function excel(){
+        return Excel::download(new CasosExport, 'casos.xlsx');
+        return redirect('/estadisticas/ver');
     }
 
     

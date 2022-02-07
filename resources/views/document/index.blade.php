@@ -33,18 +33,16 @@
                             $date2 = new DateTime($caso->updated_at);
                             $diff = $date1->diff($date2);
                             $total = $total+1;
-                            $resultado = $diff->i;
+                            $resultado = $resultado + $diff->i;
                             ?>
                         <td><?php echo $diff->i.' Minutos '. $diff->s. ' Segundos' ?></td>
                     </tr>
                 @endforeach
                         
                         <?php
-                            if($resultado != 0 ){
+                            
                                 $res = $resultado / $total ;
-                            }else{
-                                $res = 0;
-                            }
+                            
                         ?>
                         <td><?php ?></td>
                     
@@ -54,7 +52,8 @@
     <div class="">
         <p>Este es el reporte de estadisticas en la mesa de ayuda referente a los tickets de soporte por el equipo de sistemas</p>
         <p>El numero de tickets Cerrados estes mes son: {{$total}}</p><b></b>
-        <p>El tiempo estimado de respuesta promedio es: <?php echo $res ?> Minutos</p>
+        <p>El tiempo estimado de respuesta promedio es: <?php echo number_format($res) ?> Minutos</p>
+
     </div>
 
 </div>

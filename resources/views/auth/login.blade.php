@@ -4,8 +4,8 @@
 
     <x-guest-layout >
         <x-jet-authentication-card>
-            <x-slot name="logo">
-                <img src="https://www.hmfs.gov.co/wp-content/uploads/2021/08/LOGO-ENCABEZADOFF-8.png" >
+            <x-slot name="logo" class="d-flex justify-content-center">
+                <img src="https://drive.google.com/uc?id=1C0Yjwn-UuZwysi4UalYrSgA8qbQWs3PB" height="10%">
             </x-slot>
     
             <x-jet-validation-errors class="mb-4" />
@@ -49,3 +49,19 @@
         </x-jet-authentication-card>
     </x-guest-layout>
 </div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<link rel-"stylesheet" href-"/css/admin custom.css">
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+   $(document).ready(function() {
+      $('#todos').DataTable();
+   } );
+</script>
+<script> console.log('Hi!'); </script>
+<style>

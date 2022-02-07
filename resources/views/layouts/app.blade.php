@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>ADMINISTRACION</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -51,7 +51,7 @@
         @livewireScripts
 
         @yield('js')
-        <script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous">
         <script rel="stylesheet" href="https://code.jquery.com/jquery-3.5.1.js">
         <script rel="stylesheet" href="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js">
         <script rel="stylesheet" href="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"defer>
