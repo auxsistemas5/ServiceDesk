@@ -4,7 +4,7 @@
    <h1><b>ASIGNAR CASO</b></h1>
 
    <div>
-       <form action="/dash/casos/{{$caso->id}}" method="POST">
+       <form action="/dash/casos/{{$caso->id}}" id="editar" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
@@ -20,7 +20,12 @@
                     <label for="">PRIORIDAD:</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fa fa-duotone fa-layer-group"></i></span>
-                        <input  name="PRIORIDAD"  class="form-control" type="text" value="{{$caso->PRIORIDAD}}">
+                        <select name="PRIORIDAD" id="" class="form-select">
+                            <option  name="PRIORIDAD"  class="form-control" type="text" value="{{$caso->PRIORIDAD}}">{{$caso->PRIORIDAD}}</option>
+                            <option value="BAJA">BAJA</option>
+                            <option value="MEDIA">MEDIA</option>
+                            <option value="ALTA">ALTA</option>
+                        </select>
                     </div>
                     
                 </div>
@@ -99,7 +104,7 @@
             </div>
             
             <div hidden>
-            <input type="text" name="ESTADO" value="En Desarrollo">
+                <input type="text" name="ESTADO" value="En Desarrollo">
             </div>
             <div hidden class="">
                 <input name="RESPUESTATENCION" type="text" value="Se esta atendiendo el ticket en este momento!">
@@ -117,5 +122,16 @@
     <link rel-"stylesheet" href-"/css/admin custom.css">
 @stop
 @section('js')
-  <script> console.log('Hi!'); </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+      $('#editar').submit(function(e){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'CASO ASIGNADO CON EXITO',
+            showConfirmButton: false,
+            timer: 2000
+        })
+      })
+  </script>
 @stop

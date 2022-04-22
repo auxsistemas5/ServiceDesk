@@ -40,8 +40,8 @@ class CasoController extends Controller
      */
     public function create()
     {
-        $area = DB::table('areas_hospital')->get();
-        $daños = Dano::all();
+        $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
+        $daños = Dano::orderBy('TIPODANO', 'ASC')->get();
         return view('casos.create', ['area' => $area],['daños' => $daños]);
     }
 
@@ -111,8 +111,8 @@ class CasoController extends Controller
      */
     public function edit($id)
     {
-        $area = DB::table('areas_hospital')->get();
-        $daños = DB::table('danos')->get();
+        $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
+        $daños = DB::table('danos')->orderBy('TIPODANO', 'ASC')->get();
         //se trae todos los usuarios que tenga rol de administrador
         $users = User::where('type_rol',1)->where('admin', auth()->user()->admin)->get();
         $caso = Caso::find($id);
@@ -183,8 +183,8 @@ class CasoController extends Controller
     }
 
     public function reasignar($id){
-        $area = DB::table('areas_hospital')->get();
-        $daños = DB::table('danos')->get();
+        $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
+        $daños = DB::table('danos')->orderBy('TIPODANO', 'ASC')->get();
         //se trae todos los usuarios que tenga rol de administrador
         $users = User::where('type_rol',1)->where('admin', auth()->user()->admin)->get();
         $caso = Caso::find($id);
@@ -233,10 +233,9 @@ class CasoController extends Controller
         $caso->save();
         
         //saca el email del usuario que publico el caso para enviarle la respuesta
-        $model = User::where('name', $caso->SOLICITANTE)->get();
+        //$model = User::where('name', $caso->SOLICITANTE)->get();
         
-        $email = new NotificacionMailable;
-        Mail::to($model[0]->email)->send($email);
+        //Mail::to($model[0]->email)->send(new NotificacionMailable($caso));
         Session::flash('cerrar', 'Caso Cerrado con exito');   
         return redirect('/dash/casos');
         

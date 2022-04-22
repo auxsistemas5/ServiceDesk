@@ -39,6 +39,7 @@
             </ul>
             <form class="">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{auth()->user()->name}}
@@ -54,16 +55,11 @@
       </nav>
     @yield('content')
     
-    
-
-    
-
     <!-- Scripts -->
-    
-    
-    
-    
+    @yield('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </body>
 </html>

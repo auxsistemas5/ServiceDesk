@@ -12,7 +12,7 @@
                      <tr>
                         <th>ID</th>
                         <th>AREA</th>
-                        <th>DESCRIPTION</th>
+                        <th>DESCRIPCIÓN</th>
                         <th>PRIORIDAD</th>
                         <th>ESTADO</th>
                      </tr>

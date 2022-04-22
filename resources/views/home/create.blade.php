@@ -1,15 +1,15 @@
 @extends('layouts.layout')
 @section('content')
-    <h3 class="d-flex justify-content-center"><b>CREAR NUEVO TICKET DE SOPORTE</b></h3>
+    <h3 class="mt-2 d-flex justify-content-center"><b>CREAR NUEVO TICKET DE SOPORTE</b></h3>
     <div class="container mt-3 ">
-        <form action="/dash/mesaDeAyuda" method="POST" enctype="multipart/form-data">
+        <form action="/dash/mesaDeAyuda" method="POST" id="crear" enctype="multipart/form-data">
          @csrf
          <div class="row">
              <div class="col-md-6  ">
                  <label for="" > <b>SOLICITANTE:</b></label>
                  <div class=" input-group mb-3">
                      <span class="input-group-text "><i class="fa fa-user"></i></span>
-                     <input class="form-control"  name="SOLICITANTE" type="text" value="{{auth()->user()->name}} ">
+                     <input class="form-control" id="nombre"  name="SOLICITANTE" type="text" value="{{auth()->user()->name}} ">
                  </div>
              </div>
              <div class=" col-md-6">
@@ -17,7 +17,7 @@
                  <div class="input-group mb-3">
                      <span class="input-group-text"><i class="fa fa-duotone fa-layer-group"></i></span>
                      <select name="PRIORIDAD" id="PRIORIDAD" class="form-select">
-                         <option value="">Seleccione</option>
+                         <option value="Seleccione">Seleccione</option>
                          <option value="BAJA">BAJA</option>
                          <option value="MEDIA">MEDIA</option>
                          <option value="ALTA">ALTA</option>
@@ -42,7 +42,7 @@
              <div class="input-group mb-3">
                  <span class="input-group-text"><i class="fa fa-chart-area"></i></span>
                  <select name="AREA" id="AREA" class="form-select">
-                   <option value="">Seleccione</option>
+                   <option value="Seleccione">Seleccione</option>
                    @foreach ($area as $a)
                        <option value="{{$a->DEPARTAMENTO}}">{{$a->DEPARTAMENTO}}</option>
                    @endforeach
@@ -58,7 +58,7 @@
              <div class="input-group mb-3">
                  <span class="input-group-text"><i class="fa fa-solid fa-gavel"></i></span>
                  <select name="TIPODAÑO" id="TIPODANO" class="form-select">
-                 <option value="">Seleccione</option>
+                 <option value="Seleccione">Seleccione</option>
                  @foreach ($daños as $d)
                      <option value="{{$d->TIPODANO}}">{{$d->TIPODANO}}</option>
                  @endforeach
@@ -69,7 +69,7 @@
              <div class="input-group mb-2">
                  <span class=" input-group-text "><i class="fa fa-solid fa-archway"></i></i></span>
                  <select name="AREADESTINO" id="AREADESTINO" class="form-select">
-                   <option value="">Seleccione</option>
+                   <option value="Seleccione">Seleccione</option>
                      <option value="TECNOLOGÍA">TECNOLOGÍA</option>
                      <option hidden value="MANTENIMIENTO">MANTENIMIENTO</option>
                      <option  hidden value="BIOMEDICOS">BIOMEDICOS</option>
@@ -81,12 +81,13 @@
  
          <div class=" row mt-2">
            <div class="">
-                <button  class="btn btn-info  text-white">Crear Caso</button>
+                <button type="submit" class="btn btn-info  text-white">Crear Caso</button>
            </div>
          </div> <br>
         </form>
     </div>
 @endsection
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 <link rel-"stylesheet" href-"/css/admin custom.css">
@@ -102,3 +103,41 @@
    } );
 </script>
 <script> console.log('Hi!'); </script>
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        nombre = document.getElementById('nombre');
+        descripcion = document.getElementById('DESCRIPTION');
+        destino = document.getElementById('AREADESTINO');
+        
+        tipoDano = document.getElementById('TIPODANO');
+        area = document.getElementById('AREA');
+        prioridad = document.getElementById('PRIORIDAD');
+    
+    
+        $('#crear').submit(function(e){
+            console.log(prioridad.value);
+    
+            if(nombre.value == "" || descripcion.value == "" || destino.value == "Seleccione" || tipoDano.value == "Seleccione" || area.value == "Seleccione" || prioridad.value =="Seleccione"){                
+                e.preventDefault();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'ERROR REVISE LOS CAMPOS NUEVAMENTE',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }else{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'CASO CREADO CON EXITO!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+            
+        })
+    </script>
+@endsection
+

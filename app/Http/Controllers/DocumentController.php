@@ -90,8 +90,8 @@ class DocumentController extends Controller
     }
 
     public function downloadPDF(){
-        $fechaI = "2022-01-01";
-        $final = "2022-01-31";
+        $fechaI = "2022-02-01";
+        $final = "2022-02-28";
         $casos = Caso::where('ESTADO','Cerrado')->whereBetween('updated_at',[$fechaI,$final])->get();
         $pdf = PDF::loadView('document.index', compact('casos'));
 

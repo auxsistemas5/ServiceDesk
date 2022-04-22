@@ -4,14 +4,14 @@
    <h1><b>AGREGAR CASO</b></h1>
 
    <div class=" container">
-       <form action="/dash/casos" method="POST" enctype="multipart/form-data">
+       <form action="/dash/casos" id="crear" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6  ">
                 <label for="" > SOLICITANTE</label>
                 <div class=" input-group mb-3">
                     <span class="input-group-text "><i class="fa fa-user"></i></span>
-                    <input class="form-control"  name="SOLICITANTE" type="text" value="{{auth()->user()->name}} ">
+                    <input class="form-control " id="nombre"  name="SOLICITANTE" type="text" value="{{auth()->user()->name}} ">
                 </div>
             </div>
             <div class=" col-md-6">
@@ -19,7 +19,7 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-duotone fa-layer-group"></i></span>
                     <select name="PRIORIDAD" id="PRIORIDAD" class="form-select">
-                        <option value="">Seleccione</option>
+                        <option value="Seleccione">Seleccione</option>
                         <option value="BAJA">BAJA</option>
                         <option value="MEDIA">MEDIA</option>
                         <option value="ALTA">ALTA</option>
@@ -43,7 +43,7 @@
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-chart-area"></i></span>
                 <select name="AREA" id="AREA" class="form-select">
-                  <option value="">Seleccione</option>
+                  <option value="Seleccione">Seleccione</option>
                   @foreach ($area as $a)
                       <option value="{{$a->DEPARTAMENTO}}">{{$a->DEPARTAMENTO}}</option>
                   @endforeach
@@ -59,7 +59,7 @@
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa fa-solid fa-gavel"></i></span>
                 <select name="TIPODAÑO" id="TIPODANO" class="form-select">
-                <option value="">Seleccione</option>
+                <option value="Seleccione">Seleccione</option>
                 @foreach ($daños as $d)
                     <option value="{{$d->TIPODANO}}">{{$d->TIPODANO}}</option>
                 @endforeach
@@ -70,7 +70,7 @@
             <div class="input-group mb-2">
                 <span class=" input-group-text "><i class="fa fa-solid fa-archway"></i></i></span>
                 <select name="AREADESTINO" id="AREADESTINO" class="form-select">
-                  <option value="">Seleccione</option>
+                    <option value="Seleccione">Seleccione</option>
                     <option value="TECNOLOGÍA">TECNOLOGÍA</option>
                     <option value="MANTENIMIENTO">MANTENIMIENTO</option>
                     <option value="BIOMEDICOS">BIOMEDICOS</option>
@@ -93,7 +93,42 @@
     <link rel-"stylesheet" href-"/css/admin custom.css">
 @stop
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous"></script>
   <script> console.log('Hi!'); </script>
+  <script>
+        nombre = document.getElementById('nombre');
+        descripcion = document.getElementById('DESCRIPTION');
+        destino = document.getElementById('AREADESTINO');
+	   
+        tipoDano = document.getElementById('TIPODANO');
+        area = document.getElementById('AREA');
+        prioridad = document.getElementById('PRIORIDAD');
+
+
+        
+
+        $('#crear').submit(function(e){
+            if(nombre.value == "" || descripcion.value == "" || destino.value == "Seleccione" || tipoDano.value == "Seleccione" || area.value == "Seleccione" || prioridad.value =="Seleccione"){                
+                e.preventDefault();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'ERROR REVISE LOS CAMPOS NUEVAMENTE',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }else{
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'CASO CREADO CON EXITO!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+          
+        })
+  </script>
 @stop

@@ -1,8 +1,7 @@
 @extends ('layouts.layout')
 @section('title', 'Inicio')
 @section("content")
-
-    <div class=" mt-3 d-flex justify-content-center">
+    <div class=" d-flex justify-content-center ">
         <h3><b>SELECCIONE EL AREA 
             DE SU INTERES</b></h3>
     </div>
@@ -316,7 +315,7 @@
     @media(min-width: 766px){
 
         body{
-            background-image: url("https://www.oas.org/ext/Portals/14/EasyDNNnews/2179/Image.jpg");
+            background-image: url("https://s1.1zoom.me/b4147/86/Keyboard_Toys_Macro_Closeup_Laptops_Police_520947_1366x768.jpg");
             width: 100%;
             height: 100%;
             background-size: cover;

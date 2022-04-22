@@ -4,7 +4,7 @@
    <h1><b>ASIGNAR CASO</b></h1>
 
    <div>
-       <form action="/dash/casos/miscasos/{{$caso->id}}/asignar" method="POST">
+       <form action="/dash/casos/miscasos/{{$caso->id}}/asignar" id="reasignar" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
@@ -115,4 +115,17 @@
 @stop
 @section('js')
   <script> console.log('Hi!'); </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+      $('#reasignar').submit(function(e){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'REASIGNACION HECHA CON EXITO',
+            showConfirmButton: false,
+            timer: 2000
+        })
+      })
+  </script>
+
 @stop

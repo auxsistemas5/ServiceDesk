@@ -12,31 +12,31 @@
    
                <div>
                    <x-jet-label for="name" value="{{ __('Nombre') }}" />
-                   <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                   <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="off" />
                </div>
 
                
         
                 <div>
                     <x-jet-label for="username" value="{{ __('Documento') }}" />
-                    <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="username" />
+                    <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="off" />
                 </div>
                
                
    
                <div class="mt-2">
                    <x-jet-label for="email" value="{{ __('Correo') }}" />
-                   <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"  />
+                   <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"  autocomplete="off"/>
                </div>
    
                <div class="mt-2">
                    <x-jet-label for="password" value="{{ __('Contraseña') }}" />
-                   <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                   <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="off" />
                </div>
    
                <div class="mt-2">
                    <x-jet-label for="password_confirmation" value="{{ __('Verificar Contraseña') }}" />
-                   <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                   <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="off" />
                </div>
    
                @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())

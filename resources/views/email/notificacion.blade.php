@@ -13,12 +13,23 @@
         <h3 class="alert alert-dark text-white">NOTIFICACION MESA DE AYUDA</h3>
     </div>
     <div>
-        <p>Hola, hacemos parte del equipo de T.I del Hospital Marco Fidel Suarez queremos notificarte que tu caso en la mesa de ayuda fue solucionado con exito , si tienes alguna duda comunicate con nosotros!</p> <br>
+        <p>EL EQUIPO DE TECNOLOGIA DEL HOSPITAL MARCO FIDEL SUAREZ QUIERE INFORMARTE QUE EL CASO: </p> <br>
 
+        <b>SOLICITADO POR: </b>  {{$caso['SOLICITANTE']}}<br>
+        <b>CREADO EL DIA: </b> {{$caso['created_at']}}<br>
+        <b>CON ASUNTO: </b> {{$caso['DESCRIPTION']}}<br>
+        <b>PARA EL AREA:</b> {{$caso['AREADESTINO']}}<br>
+        <b>TIPO DAÑO: </b> {{$caso['TIPODAÑO']}}<br>
+        <b>PRIORIDAD: </b> {{$caso['PRIORIDAD']}}<br>
 
+        <b>SE ENCUENTRA EN ESTE MOMENTO EN ESTADO: </b> {{$caso['ESTADO']}}<br>
+        <b>FUE SOLUCIONADO POR EL INGENIERO: </b>{{$caso['USUARIOASIGNADO']}}<br>
+        <b>Y RESPONDIO AL CASO: </b>{{$caso['RESPUESTAUSUARIOASIGNADO']}}<br><br>
 
-        <p><b>T.I HMFS</b></p>
-        <img src="https://www.hmfs.gov.co/wp-content/uploads/2021/08/LOGO-ENCABEZADOFF-8.png" width="250" height="60">
+        SE SOLUCIONO DE MANERA EXITOSA!<br>
+         
+        <p><b>AREA DE TECNOLOGÍA HMFS</b></p>
+        <img src="https://www.hmfs.gov.co/wp-content/uploads/2021/08/LOGO-ENCABEZADOFF-8.png" width="250"height="60">
     </div>
 </body>
 </html>

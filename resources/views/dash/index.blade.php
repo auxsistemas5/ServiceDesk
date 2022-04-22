@@ -1,5 +1,5 @@
 @extends ('adminlte::page')
-@section('title', 'Dashboard')
+@section('title', 'ADMIN DASHBOARD')
 @section("content_header")
 
     <div class="d-flex justify-content-center">

@@ -31,6 +31,7 @@
             <thead>
                 <tr class="bg-dark">
                     <th>ID</th>
+                    <th>USUARIO</th>
                     <th>NOMBRE</th>
                     <th>CORREO</th>
                     <th>TIPO DE ROL</th>
@@ -46,6 +47,7 @@
                             @csrf
                             @method('PUT')
                             <td>{{$users->id}}</td>
+                            <td>{{$users->username}}</td>
                             <td>{{$users->name}}</td>
                             <td>{{$users->email}}</td>
 

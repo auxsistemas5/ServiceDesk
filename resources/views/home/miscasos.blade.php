@@ -16,7 +16,7 @@
                         <tr>
                         <th>ID</th>
                         <th>AREA</th>
-                        <th>DESCRIPCION</th>
+                        <th>DESCRIPCIÓN</th>
                         <th>ATENCION</th>
                         <th>PRIORIDAD</th>
                         <th>ESTADO</th>
@@ -31,10 +31,15 @@
                                     <td>{{$micaso->AREA}}</td>
                                     <td>{{$micaso->DESCRIPTION}}</td>
 
-                                    @if ($micaso->RESPUESTATENCION == "NULL" )
+                                    @if ($micaso->ESTADO == "Abierto" )
                                         <td>No se está atendiendo Aun</td>
                                     @else
-                                        <td>{{$micaso->RESPUESTATENCION}}</td>
+                                        @if ($micaso->ESTADO == "Cerrado" )
+                                            <td>Se esta atendiendo actualmente</td>
+                                        @else
+
+                                            <td>Se esta atendiendo actualmente</td>
+                                        @endif
                                     @endif
                                     @if ($micaso->PRIORIDAD == "BAJA")
                                     <td><span class="badge rounded-pill bg-success">{{$micaso->PRIORIDAD}}</span></td>
