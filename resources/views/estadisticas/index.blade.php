@@ -12,7 +12,7 @@
             <p>El total de casos cerrados hasta hoy: {{$total}}</p>
         </div>
         <div class="col-md-6">
-            <p>Casos cerrados este mes: {{$enero}}</p>
+            <p>Casos cerrados este mes: {{$abril}}</p>
         </div>
     </div>
     <div class="row">

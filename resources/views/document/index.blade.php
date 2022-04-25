@@ -50,7 +50,7 @@
         </table>
     </div>
     <div class="">
-        <p>Este es el reporte de estadisticas en la mesa de ayuda referente a los tickets de soporte por el equipo de sistemas</p>
+        <p>Este es el reporte de estadisticas en la mesa de ayuda referente a los tickets de soporte por el equipo de Tecnología</p>
         <p>El numero de tickets Cerrados estes mes son: {{$total}}</p><b></b>
         <p>El tiempo estimado de respuesta promedio es: <?php echo number_format($res) ?> Minutos</p>
 
