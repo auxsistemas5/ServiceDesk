@@ -83,7 +83,7 @@
                 labels: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO','SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
                 datasets: [{
                     label: 'CASOS SOLUCIONADOS POR MES',
-                    data: [enero, 19, 3, 5, 2, 3, 2,7,8,2,3,12],
+                    data: [10, 19, 3, 5, 2, 3, 2,7,8,2,3,12],
                     backgroundColor: [
                         'rgba(255, 45, 0)',
                         'rgba(0, 128, 255 )',
