@@ -23,8 +23,8 @@
                         <td>{{$caso->id}}</td>
                         <td>{{$caso->DESCRIPTION}}</td>
                         <td>{{$caso->SOLICITANTE}}</td>
-                        <td>{{$caso->created_at->format('d-m-Y')}}</td>
-                        <td>{{$caso->updated_at->format('d-m-Y')}}</td>
+                        <td>{{$caso->created_at->format('d-m-Y h:i:s')}}</td>
+                        <td>{{$caso->updated_at->format('d-m-Y h:i:s')}}</td>
                         @if ($caso->CONFIRMADO == 1)
                            <td>SI</td>
                         @else
