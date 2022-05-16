@@ -71,5 +71,20 @@ class CasoUsuarioController extends Controller
         return view('home.miscasoscerrados',['caso' => $caso]);
     }
 
+    public function cerrar(Request $request, $id){
+        $caso = Caso::find($id);
+
+        $caso->CONFIRMADO = 1;
+        date_default_timezone_set('America/Bogota');
+        $saved = $caso->save();
+
+        if($saved){
+            Session::flash('CERRADO', 'Caso cerrado y verificado con exito');    
+            return redirect('/dash/mesaDeAyuda/miscasoscerrados');
+        }
+
+
+    }
+
     
 }

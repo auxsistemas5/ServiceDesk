@@ -86,6 +86,8 @@ Route::get('/dash/mesaDeAyuda/miscasos', 'App\Http\Controllers\CasoUsuarioContro
 Route::get('/dash/mesaDeAyuda/create', 'App\Http\Controllers\CasoUsuarioController@create');
 Route::get('/dash/mesaDeAyuda/miscasos', 'App\Http\Controllers\CasoUsuarioController@miscasos');
 Route::get('/dash/mesaDeAyuda/miscasoscerrados', 'App\Http\Controllers\CasoUsuarioController@miscasoscerrados');
+Route::get('/dash/mesaDeAyuda/miscasoscerrados/{id}/cerrar', 'App\Http\Controllers\CasoUsuarioController@cerrar');
+
 
 
 

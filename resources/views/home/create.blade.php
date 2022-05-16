@@ -54,7 +54,7 @@
                  <input type="file" name="IMAGENEVIDENCIA" id="">
              </div>
  
-             <label for=""><b>TIPO DAÑO:</b></label>
+             <label for=""><b>TIPO DE REQUERIMIENTO:</b></label>
              <div class="input-group mb-3">
                  <span class="input-group-text"><i class="fa fa-solid fa-gavel"></i></span>
                  <select name="TIPODAÑO" id="TIPODANO" class="form-select">

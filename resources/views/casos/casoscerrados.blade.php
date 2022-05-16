@@ -13,6 +13,7 @@
                <th>SOLICITANTE</th>
                <th>CREADO</th>
                <th>CERRADO</th>
+               <th>CONFIRMADO USUARIO</th>
             </tr>
          </thead>
          <tbody>
@@ -24,6 +25,11 @@
                         <td>{{$caso->SOLICITANTE}}</td>
                         <td>{{$caso->created_at->format('d-m-Y')}}</td>
                         <td>{{$caso->updated_at->format('d-m-Y')}}</td>
+                        @if ($caso->CONFIRMADO == 1)
+                           <td>SI</td>
+                        @else
+                           <td>NO</td>
+                        @endif
                     </tr>
                 @endforeach
             @else
