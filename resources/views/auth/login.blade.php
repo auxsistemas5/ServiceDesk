@@ -4,8 +4,9 @@
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
     </div>
-    <x-guest-layout >
-        <x-jet-authentication-card>
+   
+    <x-guest-layout class="d-flex justify-content-center content">
+        <x-jet-authentication-card >
             <x-slot name="logo" class="d-flex justify-content-center">
                 <img src="https://drive.google.com/uc?id=1C0Yjwn-UuZwysi4UalYrSgA8qbQWs3PB" height="10%">
             </x-slot>
@@ -18,7 +19,7 @@
                 </div>
             @endif
     
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" >
                 @csrf
     
                 {{--<div>
@@ -50,6 +51,7 @@
             </form>
         </x-jet-authentication-card>
     </x-guest-layout>
+    
 </div>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
@@ -69,11 +71,22 @@
    $(window).on("load",function(){
         $(".loader-wrapper").fadeOut(2000,"linear");
     });
-
-    
+ 
 </script>
 <script> console.log('Hi!'); </script>
 <style>
+
+    .content{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #242f3f;
+    }
   .loader-wrapper {
     width: 100%;
     height: 100%;

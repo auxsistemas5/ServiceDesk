@@ -439,7 +439,7 @@ select {
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
-  -webkit-print-color-adjust: exact;
+  --webkit-print-color-adjust: exact;
           color-adjust: exact;
 }
 
@@ -449,7 +449,7 @@ select {
   background-repeat: unset;
   background-size: initial;
   padding-right: 0.75rem;
-  -webkit-print-color-adjust: unset;
+  --webkit-print-color-adjust: unset;
           color-adjust: unset;
 }
 
@@ -458,7 +458,7 @@ select {
      -moz-appearance: none;
           appearance: none;
   padding: 0;
-  -webkit-print-color-adjust: exact;
+  --webkit-print-color-adjust: exact;
           color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
@@ -1391,8 +1391,7 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+ background-color: #111827;
 }
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
@@ -2224,6 +2223,8 @@ select {
     padding-right: 2rem;
   }
 }
+
+
 
 
 
