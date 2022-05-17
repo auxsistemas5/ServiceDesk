@@ -16,15 +16,15 @@
         <p>EL EQUIPO DE TECNOLOGIA DEL HOSPITAL MARCO FIDEL SUAREZ QUIERE INFORMARTE QUE EL CASO: </p> <br>
 
         <b>SOLICITADO POR: </b>  {{$caso['SOLICITANTE']}}<br>
-        <b>CREADO EL DIA: </b> {{$caso['created_at']}}<br>
-        <b>CON ASUNTO: </b> {{$caso['DESCRIPTION']}}<br>
-        <b>PARA EL AREA:</b> {{$caso['AREADESTINO']}}<br>
+        <b>CREADO: </b> {{$caso['created_at']}}<br>
+        <b>ASUNTO: </b> {{$caso['DESCRIPTION']}}<br>
+        <b>AREA:</b> {{$caso['AREADESTINO']}}<br>
         <b>TIPO DAÑO: </b> {{$caso['TIPODAÑO']}}<br>
         <b>PRIORIDAD: </b> {{$caso['PRIORIDAD']}}<br>
-
-        <b>SE ENCUENTRA EN ESTE MOMENTO EN ESTADO: </b> {{$caso['ESTADO']}}<br>
-        <b>FUE SOLUCIONADO POR EL INGENIERO: </b>{{$caso['USUARIOASIGNADO']}}<br>
-        <b>Y RESPONDIO AL CASO: </b>{{$caso['RESPUESTAUSUARIOASIGNADO']}}<br><br>
+        
+        <b>ESTADO: </b> {{$caso['ESTADO']}}<br>
+        <b>SOLUCIONADO POR : </b>{{$caso['USUARIOASIGNADO']}}<br>
+        <b>SOLUCIÓN: </b>{{$caso['RESPUESTAUSUARIOASIGNADO']}}<br><br>
 
         SE SOLUCIONO DE MANERA EXITOSA!<br>
          

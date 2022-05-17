@@ -30,7 +30,7 @@
                         
                         <?php
                             $date1 = new DateTime($caso->created_at);
-                            $date2 = new DateTime($caso->updated_at);
+                            $date2 = new DateTime($caso->FECHA_CERRADO);
                             $diff = $date1->diff($date2);
                             $total = $total+1;
                             $resultado = $resultado + $diff->i;
@@ -41,7 +41,7 @@
                         
                         <?php
                             
-                                $res = $resultado / $total ;
+                                //$res = $resultado / $total ;
                             
                         ?>
                         <td><?php ?></td>
@@ -52,7 +52,7 @@
     <div class="">
         <p>Este es el reporte de estadisticas en la mesa de ayuda referente a los tickets de soporte por el equipo de Tecnología</p>
         <p>El numero de tickets Cerrados estes mes son: {{$total}}</p><b></b>
-        <p>El tiempo estimado de respuesta promedio es: <?php echo number_format($res) ?> Minutos</p>
+        <p>El tiempo estimado de respuesta promedio es: <?php //echo number_format($res) ?> Minutos</p>
 
     </div>
 

@@ -23,7 +23,7 @@
                         
                         <?php
                             $date1 = new DateTime($caso->created_at);
-                            $date2 = new DateTime($caso->updated_at);
+                            $date2 = new DateTime($caso->FECHA_CERRADO);
                             $diff = $date1->diff($date2);
                             $total = $total+1;
                             $resultado = $resultado + $diff->i;

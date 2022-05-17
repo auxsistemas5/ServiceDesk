@@ -229,6 +229,8 @@ class CasoController extends Controller
         $caso->ESTADO = $request->get('ESTADO');
         $caso->RESPUESTAUSUARIOASIGNADO = $request->get('RESPUESTAUSUARIOASIGNADO');
         date_default_timezone_set('America/Bogota');
+        $fecha = date('Y-m-d h:i:s');
+        $caso->FECHA_CERRADO = $fecha;
 
         $caso->save();
         
