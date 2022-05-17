@@ -233,9 +233,9 @@ class CasoController extends Controller
         $caso->save();
         
         //saca el email del usuario que publico el caso para enviarle la respuesta
-        //$model = User::where('name', $caso->SOLICITANTE)->get();
+        $model = User::where('name', $caso->SOLICITANTE)->get();
         
-        //Mail::to($model[0]->email)->send(new NotificacionMailable($caso));
+        Mail::to($model[0]->email)->send(new NotificacionMailable($caso));
         Session::flash('cerrar', 'Caso Cerrado con exito');   
         return redirect('/dash/casos');
         
