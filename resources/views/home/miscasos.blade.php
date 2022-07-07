@@ -87,6 +87,14 @@
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" defer></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
+    $(document).ready(function() {
+        $('#todos').DataTable({
+            "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.11.4/i18n/es_es.json"
+            }
+        });
+    });
+
    $(document).ready(function() {
       $('#todos').DataTable();
    } );

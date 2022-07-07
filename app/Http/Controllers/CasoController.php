@@ -24,10 +24,30 @@ class CasoController extends Controller
     public function index()
     {
         if(auth()->user()){
+            date_default_timezone_set('America/Bogota');
             //muestra solo los casos asisgnados segun el area de destino asociada al usuario como si es admin o no
-            $cases = Caso::where('AREADESTINO',auth()->user()->admin)->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get();
-            $contador = Caso::where('AREADESTINO',auth()->user()->admin)->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get()->count();
-            return view('casos.index', ['cases' => $cases, 'contador' => $contador]);
+            if(auth()->user()->admin == "TECNOLOGÍA"){
+
+                $cases = Caso::where('AREADESTINO',auth()->user()->admin)->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get();
+                $contador = Caso::where('AREADESTINO',auth()->user()->admin)->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get()->count();
+                return view('casos.index', ['cases' => $cases, 'contador' => $contador]);
+            }else{
+                if(auth()->user()->admin == "MANTENIMIENTO"){
+
+                    $cases = Caso::where('AREADESTINO',auth()->user()->admin)->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get();
+                    $contador = Caso::where('AREADESTINO','MANTENIMIENTO')->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get()->count();
+                    return view('casos.index', ['cases' => $cases, 'contador' => $contador]);
+                }else{
+                    if(auth()->user()->admin == "SOPORTE"){
+    
+                        $cases = Caso::where('AREADESTINO',auth()->user()->admin)->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get();
+                        $contador = Caso::where('AREADESTINO','SOPORTE')->where('USUARIOASIGNADO','Sin Asignar')->where('ESTADO', 'Abierto')->get()->count();
+                        return view('casos.index', ['cases' => $cases, 'contador' => $contador]);
+                    }
+                }
+            }
+
+
         }else{
             return redirect()->route('login');
         }
@@ -39,7 +59,9 @@ class CasoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    
     {
+        date_default_timezone_set('America/Bogota');
         $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
         $daños = Dano::orderBy('TIPODANO', 'ASC')->get();
         return view('casos.create', ['area' => $area],['daños' => $daños]);
@@ -68,6 +90,7 @@ class CasoController extends Controller
     public function store(Request $request)
     {
         
+        date_default_timezone_set('America/Bogota');
         $caso = new Caso();
         $caso->SOLICITANTE = $request->get('SOLICITANTE');
         $caso->PRIORIDAD = $request->get('PRIORIDAD');
@@ -76,7 +99,6 @@ class CasoController extends Controller
         $caso->AREADESTINO = $request->get('AREADESTINO');
         $caso->TIPODAÑO = $request->get('TIPODAÑO');
         //establece el formato de hora
-        date_default_timezone_set('America/Bogota');
 
         if($request->file('IMAGENEVIDENCIA') != null){
             $caso->IMAGENEVIDENCIA = $request->file('IMAGENEVIDENCIA')->store('public');
@@ -114,7 +136,7 @@ class CasoController extends Controller
         $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
         $daños = DB::table('danos')->orderBy('TIPODANO', 'ASC')->get();
         //se trae todos los usuarios que tenga rol de administrador
-        $users = User::where('type_rol',1)->where('admin', auth()->user()->admin)->get();
+        $users = User::where('type_rol',1)->get();
         $caso = Caso::find($id);
         date_default_timezone_set('America/Bogota');
 
@@ -160,6 +182,7 @@ class CasoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        date_default_timezone_set('America/Bogota');
         $caso = Caso::find($id);
 
         $caso->PRIORIDAD = $request->get('PRIORIDAD');
@@ -170,7 +193,6 @@ class CasoController extends Controller
         $caso->USUARIOASIGNADO = $request->get('USUARIOASIGNADO');
         $caso->ESTADO = $request->get('ESTADO');
 
-        date_default_timezone_set('America/Bogota');
 
         //$caso->IMAGENEVIDENCIA = $request->file('IMAGENEVIDENCIA')->store('public');
 
@@ -183,12 +205,12 @@ class CasoController extends Controller
     }
 
     public function reasignar($id){
+        date_default_timezone_set('America/Bogota');
         $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
         $daños = DB::table('danos')->orderBy('TIPODANO', 'ASC')->get();
         //se trae todos los usuarios que tenga rol de administrador
-        $users = User::where('type_rol',1)->where('admin', auth()->user()->admin)->get();
+        $users = User::where('type_rol',1)->get();
         $caso = Caso::find($id);
-        date_default_timezone_set('America/Bogota');
 
         if($caso->IMAGENEVIDENCIA != NULL){
 
@@ -224,20 +246,20 @@ class CasoController extends Controller
     public function cerrarCaso(Request $request, $id)
     {
         //busca el id del objeto y luego modifica su estado a cerrado para salir de la lista de casos abiertos
+        date_default_timezone_set('America/Bogota');
         $caso = Caso::find($id);
 
         $caso->ESTADO = $request->get('ESTADO');
         $caso->RESPUESTAUSUARIOASIGNADO = $request->get('RESPUESTAUSUARIOASIGNADO');
-        date_default_timezone_set('America/Bogota');
         $fecha = date('Y-m-d h:i:s');
         $caso->FECHA_CERRADO = $fecha;
 
         $caso->save();
         
         //saca el email del usuario que publico el caso para enviarle la respuesta
-        $model = User::where('name', $caso->SOLICITANTE)->get();
+        /*$model = User::where('name', $caso->SOLICITANTE)->get();
         
-        Mail::to($model[0]->email)->send(new NotificacionMailable($caso));
+        Mail::to($model[0]->email)->send(new NotificacionMailable($caso));*/
         Session::flash('cerrar', 'Caso Cerrado con exito');   
         return redirect('/dash/casos');
         
@@ -245,14 +267,18 @@ class CasoController extends Controller
     }
 
     public function casoscerrados(){
+        date_default_timezone_set('America/Bogota');
+
         //se organiza los casos cerrados desde el cerrado recien hasta el primero en cerrar//
-        $casoscerrados = Caso::where('ESTADO','Cerrado')->where('AREADESTINO',auth()->user()->admin)->orderBy('updated_at', 'DESC')->get();
-        $contador = Caso::where('ESTADO','Cerrado')->where('AREADESTINO',auth()->user()->admin)->orderBy('updated_at', 'DESC')->get()->count();
+        $casoscerrados = Caso::where('ESTADO','Cerrado')->where('AREADESTINO','TECNOLOGÍA')->orwhere('AREADESTINO','Soporte')->orderBy('updated_at', 'DESC')->get();
+        
+        $contador = Caso::where('ESTADO','Cerrado')->where('AREADESTINO','TECNOLOGÍA')->orwhere('AREADESTINO','Soporte')->orderBy('updated_at', 'DESC')->get()->count();
         return view('casos.casoscerrados', ['casoscerrados' => $casoscerrados, 'contador' => $contador]);
         date_default_timezone_set('America/Bogota');
     }
 
     public function miscasoscreados(){
+        date_default_timezone_set('America/Bogota');
         $caso = CASO::where('SOLICITANTE', auth()->user()->name)->get();
         return view('casos.miscasoscreados', ['caso' => $caso]);
         date_default_timezone_set('America/Bogota');
@@ -266,12 +292,14 @@ class CasoController extends Controller
      */
     public function destroy($id)
     {
+        date_default_timezone_set('America/Bogota');
         $caso = Caso::find($id);
         $caso->delete();
         return redirect('casos.administrarCasos');
     }
 
     public function excel(){
+        date_default_timezone_set('America/Bogota');
         return Excel::download(new CasosExport, 'casos.xlsx');
         return redirect('/estadisticas/ver');
     }

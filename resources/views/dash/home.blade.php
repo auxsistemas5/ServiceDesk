@@ -12,9 +12,9 @@
                 <div class="col-md-4  targ">
                     <div class="card ">
                         <div class="card-body" style="">
-                            <h5 class="card-title d-flex justify-content-center"><i class="far fa-question-circle"></i> <b>MESA DE AYUDA</b></h5>
+                            <h5 class="card-title d-flex justify-content-center"><i class="far fa-question-circle"></i> <b>MESA DE TICKETS</b></h5>
                             
-                            <img src="https://www.auraquantic.com/wp-content/uploads/2020/09/equipo-ti-2-1024x771.jpg" width="100%" height="302px">
+                            <img src="https://integralplm.com/wp-content/uploads/2018/06/soporte-tecnico-1.jpg" width="100%" height="302px">
                             <div class="botton mt-1 ">
                                 <a href="/dash/mesaDeAyuda" class="btn btn-success btn-sm form-control ">ACCEDER</a>
                             </div>
@@ -28,7 +28,7 @@
                             <img src="https://i.mkt.lu/cont/2514882/350/1024/productividad-trabajo-multitasking-art.jpg" width="100%" height="302px">
                             <div class="botton">
 
-                                <a href="#" class="btn btn-primary btn-sm  form-control">ACCEDER</a>
+                                <a href="#" class="btn btn-primary btn-sm  form-control">EN MANTENIMIENTO</a>
                             </div>
                         </div>
                     </div>

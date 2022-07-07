@@ -7,6 +7,8 @@
     <title>MESA DE AYUDA</title>
     
 
+    
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,6 +63,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/ed8911e2fa.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     
 </body>
 </html>
@@ -73,4 +76,5 @@
         background-size: cover;
         height: 100%;
     }
+  
 </style>

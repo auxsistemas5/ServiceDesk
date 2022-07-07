@@ -9,6 +9,8 @@
                     <th class="alert alert-warning"><b>DESCRIPCIÓN</b></th>
                     <th class="alert alert-warning"><b>QUIEN SOLUCIONA</b></th>
                     <th class="alert alert-warning"><b>SOLUCIONADO EN</b></th>
+                    <th><b>FECHA DE CREADO</b></th>
+                    <th><b>FECHA DE SOLUCIONADO</b></th>
                 
                 </tr>
             </thead>
@@ -29,6 +31,8 @@
                             $resultado = $resultado + $diff->i;
                             ?>
                         <td width="250px"><?php echo $diff->i.' Minutos '. $diff->s. ' Segundos' ?></td>
+                        <td width="250px">{{$caso->created_at}}</td>
+                        <td width="250px">{{$caso->FECHA_CERRADO}}</td>
                     </tr>
                 @endforeach
                         

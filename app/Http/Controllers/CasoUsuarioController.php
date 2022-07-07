@@ -17,8 +17,9 @@ class CasoUsuarioController extends Controller
     }
 
     public function create(){
-        $area = DB::table('areas_hospital')->get();
-        $daños = Dano::all();
+        date_default_timezone_set('America/Bogota');
+        $area = DB::table('areas_hospital')->orderBy('DEPARTAMENTO', 'ASC')->get();
+        $daños = DB::table('danos')->orderBy('TIPODANO', 'ASC')->get();
         return view('home.create',['area' => $area, 'daños' => $daños]);
         date_default_timezone_set('America/Bogota');
     }
@@ -26,6 +27,7 @@ class CasoUsuarioController extends Controller
     public function store(Request $request)
     {
         
+        date_default_timezone_set('America/Bogota');
         $caso = new Caso();
         $caso->SOLICITANTE = $request->get('SOLICITANTE');
         $caso->PRIORIDAD = $request->get('PRIORIDAD');
@@ -35,7 +37,6 @@ class CasoUsuarioController extends Controller
         $caso->TIPODAÑO = $request->get('TIPODAÑO');
         //$caso->created_at = $request->get('created_at');
         //$caso->updated_at = $request->get('updated_at');
-        date_default_timezone_set('America/Bogota');
        
         if($request->file('IMAGENEVIDENCIA') != null){
             $caso->IMAGENEVIDENCIA = $request->file('IMAGENEVIDENCIA')->store('public');
@@ -53,6 +54,7 @@ class CasoUsuarioController extends Controller
     }
 
     public function miscasos(){
+        date_default_timezone_set('America/Bogota');
         if(auth()->user()){
             date_default_timezone_set('America/Bogota');
             if(auth()->user()->admin == "No"){
@@ -66,16 +68,16 @@ class CasoUsuarioController extends Controller
     }
 
     public function miscasoscerrados(){
-        $caso = Caso::where('SOLICITANTE', auth()->user()->name)->where('ESTADO', 'Cerrado')->get();
         date_default_timezone_set('America/Bogota');
+        $caso = Caso::where('SOLICITANTE', auth()->user()->name)->where('ESTADO', 'Cerrado')->get();
         return view('home.miscasoscerrados',['caso' => $caso]);
     }
 
     public function cerrar(Request $request, $id){
+        date_default_timezone_set('America/Bogota');
         $caso = Caso::find($id);
 
         $caso->CONFIRMADO = 1;
-        date_default_timezone_set('America/Bogota');
         $saved = $caso->save();
 
         if($saved){

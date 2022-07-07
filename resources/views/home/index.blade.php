@@ -9,8 +9,8 @@
             <div class="col-sm-4">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="d-flex card-title justify-content-center"><b>CREAR NUEVO TICKET</b></h5>
-                  <img src="https://x6i2p6h3.rocketcdn.me/wp-content/uploads/2019/03/crearempresa.jpg" width="100%" height="299px">
+                  
+                  <img src="https://drive.google.com/uc?id=1fQs9a4-XcGVU9xjN1Fl1sN_DledNIUcH" width="100%" height="302px">
                   <div class="botton">
 
                     <a href="/dash/mesaDeAyuda/create" class="btn btn-success btn-sm form-control">ACCEDER</a>
@@ -21,9 +21,11 @@
             <div class="col-sm-4">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title d-flex  justify-content-center"><b>MIS TICKETS ABIERTOS</b></h5>
-                  <img src="https://cdn3.f-cdn.com/contestentries/1269942/15600440/5a991c82be987_thumb900.jpg" width="100%" height="302px">
+                  
+                  
+                  <img src="https://drive.google.com/uc?id=1H2MqQPRSrhKh7KDpdPzEo3FN_O0uwN3t" width="100%" height="302px">
                   <div class="botton">
+                    
                     
                     <a href="/dash/mesaDeAyuda/miscasos" class="btn btn-warning btn-sm form-control">ACCEDER</a>
                   </div>
@@ -33,8 +35,8 @@
             <div class="col-sm-4">
                 <div class="card">
                   <div class="card-body ">
-                        <h5 class="card-title d-flex justify-content-center"><b>MIS TICKETS CERRADOS</b></h5>
-                        <img src="https://us.123rf.com/450wm/yupiramos/yupiramos1905/yupiramos190513885/122581245-lista-de-verificaci%C3%B3n-portapapeles-con-l%C3%A1piz-dise%C3%B1o-de-ilustraciones-vectoriales.jpg?ver=6" width="100%" height="302px">
+                        
+                        <img src="https://drive.google.com/uc?id=1zoc1gjPsvdT7pw8SU-04SrvyB0MZyyjV" width="100%" height="302px">
                         <div class="botton">
                         <a href="/dash/mesaDeAyuda/miscasoscerrados" class="btn btn-primary btn-sm form-control">ACCEDER</a>
                         </div>

@@ -1,33 +1,37 @@
 @extends ('adminlte::page')
 @section('title', 'Dashboard')
 @section("content_header")
-   <h3 type="" class="">
-   <b>CREAR DAÑO</b>
-</h3>
-
-    <form action="/dash/danos" method="POST">
-        @csrf
-        <div class="row">
-            <div class="col-md-6">
-                <label for="">NOMBRE DEL DAÑO:</label>
-                <input type="text" name="TIPODANO" class="form-control">
-            </div>
-            <div class="col-md-6">
-                <label for="">AREA ASIGNADA AL DAÑO:</label>
-                <select name="AREA" id="" class="form-select">
-                    <option value="N/A">SELECCIONE</option>
-                    <option value="BIOMEDICOS">BIOMEDICOS</option>
-                    <option value="MANTENIMIENTO">MANTENIMIENTO</option>
-                    <option value="TECNOLOGIA">TECNOLOGÍA</option>
-                </select>
-            </div>
-                
-        </div>
-        <div class="mt-2">
-            <button class="btn btn-danger">AGREGAR DAÑO</button>
-        </div>
-    </form>
-
+  <div class="card">
+      <div class="card-body">
+        <h3 type="" class="">
+            <b>CREAR DAÑO</b>
+         </h3>
+         
+             <form action="/dash/danos" method="POST">
+                 @csrf
+                 <div class="row">
+                     <div class="col-md-6">
+                         <label for="">NOMBRE DEL DAÑO:</label>
+                         <input type="text" name="TIPODANO" class="form-control">
+                     </div>
+                     <div class="col-md-6">
+                         <label for="">AREA ASIGNADA AL DAÑO:</label>
+                         <select name="AREA" id="" class="form-select">
+                             <option value="N/A">SELECCIONE</option>
+                             <option value="BIOMEDICOS">BIOMEDICOS</option>
+                             <option value="MANTENIMIENTO">MANTENIMIENTO</option>
+                             <option value="TECNOLOGIA">TECNOLOGÍA</option>
+                         </select>
+                     </div>
+                         
+                 </div>
+                 <div class="mt-2">
+                     <button class="btn btn-danger">AGREGAR DAÑO</button>
+                 </div>
+             </form>
+         
+      </div>
+  </div>
    
 @stop
 @section('content_header')

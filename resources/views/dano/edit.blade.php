@@ -1,44 +1,48 @@
 @extends ('adminlte::page')
 @section('title', 'Dashboard')
 @section("content_header")
-   <h3 type="" class="">
-   <b>EDITAR DAÑO</b>
-</h3>
-
-    <form action="/dash/danos/{{$dano->id}}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="row">
-            <div class="col-md-6">
-                <label for="">NOMBRE DEL DAÑO:</label>
-                <input value="{{$dano->TIPODANO}}" type="text" name="TIPODANO" class="form-control">
-            </div>
-            <div class="col-md-6">
-                <label for="">AREA ASIGNADA AL DAÑO:</label>
-                <select name="AREA" id="" class="form-select">
-                    <option value="{{$dano->AREA}}">{{$dano->AREA}}</option>
-                    @if ($dano->AREA == "BIOMEDICOS")
-                        <option value="MANTENIMIENTO">MANTENIMIENTO</option>
-                        <option value="TECNOLOGIA">TECNOLOGÍA</option>
-                    @else
-                        @if ($dano->AREA == "MANTENIMIENTO")
-                            <option value="BIOMEDICOS">BIOMEDICOS</option>
-                            <option value="TECNOLOGIA">TECNOLOGÍA</option>
-                        @else
-                        <option value="BIOMEDICOS">BIOMEDICOS</option>
-                        <option value="MANTENIMIENTO">MANTENIMIENTO</option>
-                        @endif
-                    @endif
-                    
-                </select>
-            </div>
-                
-        </div>
-        <div class="mt-2">
-            <button class="btn btn-info">ACTUALIZAR</button>
-        </div>
-    </form>
-
+   <div class="card">
+       <div class="card-body">
+        <h3 type="" class="">
+            <b>EDITAR DAÑO</b>
+         </h3>
+         
+             <form action="/dash/danos/{{$dano->id}}" method="POST">
+                 @csrf
+                 @method('PUT')
+                 <div class="row">
+                     <div class="col-md-6">
+                         <label for="">NOMBRE DEL DAÑO:</label>
+                         <input value="{{$dano->TIPODANO}}" type="text" name="TIPODANO" class="form-control">
+                     </div>
+                     <div class="col-md-6">
+                         <label for="">AREA ASIGNADA AL DAÑO:</label>
+                         <select name="AREA" id="" class="form-select">
+                             <option value="{{$dano->AREA}}">{{$dano->AREA}}</option>
+                             @if ($dano->AREA == "BIOMEDICOS")
+                                 <option value="MANTENIMIENTO">MANTENIMIENTO</option>
+                                 <option value="TECNOLOGIA">TECNOLOGÍA</option>
+                             @else
+                                 @if ($dano->AREA == "MANTENIMIENTO")
+                                     <option value="BIOMEDICOS">BIOMEDICOS</option>
+                                     <option value="TECNOLOGIA">TECNOLOGÍA</option>
+                                 @else
+                                 <option value="BIOMEDICOS">BIOMEDICOS</option>
+                                 <option value="MANTENIMIENTO">MANTENIMIENTO</option>
+                                 @endif
+                             @endif
+                             
+                         </select>
+                     </div>
+                         
+                 </div>
+                 <div class="mt-2">
+                     <button class="btn btn-info">ACTUALIZAR</button>
+                 </div>
+             </form>
+         
+       </div>
+   </div>
    
 @stop
 @section('content_header')

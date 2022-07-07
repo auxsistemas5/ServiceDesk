@@ -20,7 +20,11 @@ class EstadisticasController extends Controller
         $febrero = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-02-01','2022-02-28'])->get()->count();
         $marzo = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-03-01','2022-03-31'])->get()->count();
         $abril = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-04-01','2022-04-30'])->get()->count();
+        $mayo = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-05-01','2022-05-31'])->get()->count();
+        $junio = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-06-01','2022-06-30'])->get()->count();
+        $julio = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-07-01','2022-07-31'])->get()->count();
+        $agosto = Caso::where('ESTADO', 'Cerrado')->whereBetween('updated_at', ['2022-08-01','2022-08-31'])->get()->count();
         
-        return view('estadisticas.index', ['enero' => $enero,'febrero' => $febrero,'marzo' => $marzo,'abril' => $abril, 'total' => $total]);
+        return view('estadisticas.index', ['enero' => $enero,'febrero' => $febrero,'marzo' => $marzo,'julio' => $julio, 'total' => $total]);
     }
 }

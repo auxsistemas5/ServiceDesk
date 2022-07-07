@@ -9,7 +9,7 @@
                  <label for="" > <b>SOLICITANTE:</b></label>
                  <div class=" input-group mb-3">
                      <span class="input-group-text "><i class="fa fa-user"></i></span>
-                     <input class="form-control" id="nombre"  name="SOLICITANTE" type="text" value="{{auth()->user()->name}} ">
+                     <input readonly class="form-control" id="nombre"  name="SOLICITANTE" type="text" value="{{auth()->user()->name}} ">
                  </div>
              </div>
              <div class=" col-md-6">

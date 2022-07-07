@@ -1,25 +1,29 @@
 @extends ('adminlte::page')
 @section('title', 'Dashboard')
 @section("content_header")
-<h3><b>Solucionar Caso</b></h3>
-    <form action="/dash/casos/miscasos/{{$caso->id}}/cerrarCaso" id="solucionar" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <label for="">ESTADO</label>
-                <select class="form-control" name="ESTADO" id="">
-                    <option value="Abierto">Abierto</option>
-                    <option value="Cerrado">Cerrado</option>
-                </select>
+    <div class="card">
+        <div class="card-body">
+            <h3><b>Solucionar Caso</b></h3>
+            <form action="/dash/casos/miscasos/{{$caso->id}}/cerrarCaso" id="solucionar" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <label for="">ESTADO</label>
+                    <select class="form-control" name="ESTADO" id="">
+                        <option value="Abierto">Abierto</option>
+                        <option value="Cerrado">Cerrado</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="">RESPUESTA:</label>
+                    <textarea class="form-control" name="RESPUESTAUSUARIOASIGNADO" id="respuesta"  rows="8"></textarea>
+                </div>
             </div>
-            <div class="col-md-5">
-                <label for="">RESPUESTA:</label>
-                <textarea class="form-control" name="RESPUESTAUSUARIOASIGNADO" id="respuesta"  rows="8"></textarea>
-            </div>
-        </div>
-        <button class="btn btn-warning">FINALIZAR</button>
+            <button class="mt-3 btn btn-primary form-control">FINALIZAR</button>
     </form>
+        </div>
+    </div>
 @stop
 @section('content_header')
    <p>welcome to this beautiful adnin panel.</p>

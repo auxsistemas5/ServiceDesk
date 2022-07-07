@@ -18,7 +18,7 @@
                
         
                 <div>
-                    <x-jet-label for="username" value="{{ __('Documento') }}" />
+                    <x-jet-label for="username" value="{{ __('Usuario') }}" />
                     <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="off" />
                 </div>
                

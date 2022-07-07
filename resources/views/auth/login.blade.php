@@ -8,8 +8,10 @@
     <x-guest-layout class="d-flex justify-content-center content">
         <x-jet-authentication-card >
             <x-slot name="logo" class="d-flex justify-content-center">
-                <img src="https://drive.google.com/uc?id=1C0Yjwn-UuZwysi4UalYrSgA8qbQWs3PB" height="10%">
+                <!--<img src="https://drive.google.com/uc?id=1C0Yjwn-UuZwysi4UalYrSgA8qbQWs3PB" height="10%">-->
+               
             </x-slot>
+            
     
             <x-jet-validation-errors class="mb-4" />
     
@@ -75,16 +77,9 @@
 </script>
 <script> console.log('Hi!'); </script>
 <style>
+    
 
     .content{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display:flex;
-        justify-content: center;
-        align-items: center;
         background-color: #242f3f;
     }
   .loader-wrapper {
