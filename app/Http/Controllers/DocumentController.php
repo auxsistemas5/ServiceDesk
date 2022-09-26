@@ -92,8 +92,8 @@ class DocumentController extends Controller
     public function downloadPDF(){
         $fechaI = "2022-07-01";
         $final = "2022-07-31";
-        $casos = Caso::where('ESTADO','Cerrado')->whereBetween('updated_at',[$fechaI,$final])->get();
-        $pdf = PDF::loadView('document.index', compact('casos'));
+        $casos = Caso::where('ESTADO','Cerrado')->where('AREADESTINO', 'TECNOLOGÍA')->whereBetween('updated_at',[$fechaI,$final])->get();
+        $pdf = PDF::loadView('document.index', compact('casos'))->setPaper('a4', 'landscape');
 
         return $pdf->download('casosDelMes.pdf');
         return redirect('/estadisticas/ver');

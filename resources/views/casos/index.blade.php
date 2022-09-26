@@ -66,6 +66,7 @@
                        <th>AREA</th>
                        <th>DESCRIPTION</th>
                        <th>SOLICITANTE</th>
+                       <th>FECHA</th>
                        <th>PRIORIDAD</th>
                        <th>ACCION</th>
                     </tr>
@@ -77,6 +78,7 @@
                           <td>{{$caso->AREA}}</td>
                           <td >{{$caso->DESCRIPTION}}</td>
                           <td>{{$caso->SOLICITANTE}}</td>
+                          <td>{{$caso->created_at}}</td>
                           @if ($caso->PRIORIDAD == "BAJA")
                           <td><span class="badge rounded-pill bg-success">{{$caso->PRIORIDAD}}</span></td>
                           @else

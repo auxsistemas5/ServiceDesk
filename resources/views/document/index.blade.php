@@ -13,9 +13,13 @@
         <table  border="1" id="tab" class="table table-bordered  " style="width:100%">
             <thead>
                 <tr>
+                    <th>ID</th>
+                    <th>FECHA</th>
                     <th>AREA</th>
+                    <th>QUIEN SOLICITA</th>
                     <th>DESCRIPCIÓN</th>
                     <th>QUIEN SOLUCIONA</th>
+                    <th>TIPO DE DAÑO</th>
                     <th>SOLUCIONADO EN</th>
                 
                 </tr>
@@ -24,8 +28,12 @@
                 <?php $resultado = 0; $total = 0; ?>
                 @foreach ($casos as $caso)
                     <tr> 
+                        <td>{{$caso->id}}</td>
+                        <td>{{$caso->created_at}}</td>
                         <td>{{$caso->AREA}}</td>
+                        <td>{{$caso->SOLICITANTE}}</td>
                         <td>{{$caso->DESCRIPTION}}</td>
+                        <td>{{$caso->TIPODAÑO}}</td>
                         <td>{{$caso->USUARIOASIGNADO}}</td>
                         
                         <?php

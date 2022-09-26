@@ -35,8 +35,9 @@
                         <th>AREA</th>
                         <th>DESCRIPCIÓN</th>
                         <th>PRIORIDAD</th>
-                        <th>ESTADO</th>
-                        <th>VERIFICACIÓN</th>
+                        <th>OBSERVACIÓN</th>
+                        <th>RESPUESTA DE REVISIÓN</th>
+                        <th>CONFIRMACIÓN DE CASO</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -58,17 +59,22 @@
                            @endif
       
                            @if ($caso->ESTADO == "Abierto")
-                              <td><span class="badge rounded-pill bg-primary">{{$caso->ESTADO}}</span></td>
+                              <td><span class="badge rounded-pill bg-primary">Caso sin Revisar</span></td>
                            @else
                               @if ($caso->ESTADO == "En Desarrollo")
-                              <td><span class="badge rounded-pill bg-secondary">{{$caso->ESTADO}}</span></td>
+                              <td><span class="badge rounded-pill bg-secondary">Revisando Caso</span></td>
       
                               @else
-                              <td><span class="badge rounded-pill bg-dark">{{$caso->ESTADO}}</span></td>
+                              <td><span class="badge rounded-pill bg-dark">Revisado por Tecnología</span></td>
                               @endif
                            @endif
+                           @if($caso->RESPUESTAUSUARIOASIGNADO == '')
+                              <td>SIN RESPONDER</td>
+                           @else
+                              <td>{{$caso->RESPUESTAUSUARIOASIGNADO}}</td>
+                           @endif
                            @if ($caso->CONFIRMADO == 0)
-                              <td><a href="/dash/mesaDeAyuda/miscasoscerrados/{{$caso->id}}/cerrar" class="btn btn-success btn-sm">CERRAR</a></td>
+                              <td><a href="/dash/mesaDeAyuda/miscasoscerrados/{{$caso->id}}/cerrar" class="btn btn-success btn-sm">CASO POR CERRAR</a></td>
                            @else
                               <td>CERRADO</td>
                            @endif

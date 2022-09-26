@@ -71,8 +71,7 @@
                  <select name="AREADESTINO" id="AREADESTINO" class="form-select">
                    <option value="Seleccione">Seleccione</option>
                      <option value="TECNOLOGÍA">TECNOLOGÍA</option>
-                     <option hidden value="MANTENIMIENTO">MANTENIMIENTO</option>
-                     <option  hidden value="BIOMEDICOS">BIOMEDICOS</option>
+                     
                  </select>
              </div>
            </div>

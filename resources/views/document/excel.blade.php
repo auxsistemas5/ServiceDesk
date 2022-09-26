@@ -4,13 +4,14 @@
         <table  border="1" id="tab" class="table table-bordered  " style="width:100%">
             <thead>
                 <tr>
-                    <th><b>QUIEN SOLICITA</b></th>
+                    <th><b>ID</b></th>
+                    <th class="alert alert-warning"><b>FECHA</b></th>
                     <th class="alert alert-warning"><b>AREA</b></th>
-                    <th class="alert alert-warning"><b>DESCRIPCIÓN</b></th>
-                    <th class="alert alert-warning"><b>QUIEN SOLUCIONA</b></th>
-                    <th class="alert alert-warning"><b>SOLUCIONADO EN</b></th>
-                    <th><b>FECHA DE CREADO</b></th>
-                    <th><b>FECHA DE SOLUCIONADO</b></th>
+                    <th class="alert alert-warning"><b>SOLICITANTE</b></th>
+                    <th class="alert alert-warning"><b>DESCRIPTION</b></th>
+                    <th><b>TIPODAÑO</b></th>
+                    <th><b>USUARIOASIGNADO</b></th>
+                    <th>ESTADO</th>
                 
                 </tr>
             </thead>
@@ -18,10 +19,14 @@
                 <?php $resultado = 0; $total = 0; ?>
                 @foreach ($casos as $caso)
                     <tr> 
-                        <td width="250px">{{$caso->SOLICITANTE}}</td>
+                        <td width="250px">{{$caso->id}}</td>
+                        <td width="250px">{{$caso->created_at}}</td>
                         <td width="250px">{{$caso->AREA}}</td>
+                        <td width="250px">{{$caso->SOLICITANTE}}</td>
                         <td width="250px">{{$caso->DESCRIPTION}}</td>
+                        <td width="250px">{{$caso->TIPODAÑO}}</td>
                         <td width="250px">{{$caso->USUARIOASIGNADO}}</td>
+                        <td width="250px">{{$caso->ESTADO}}</td>
                         
                         <?php
                             $date1 = new DateTime($caso->created_at);

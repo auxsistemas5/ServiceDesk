@@ -14,7 +14,9 @@
                       <th>AREA</th>
                       <th>DESCRIPCION</th>
                       <th>SOLICITANTE</th>
+                      <th>FECHA</th>
                       <th>PRIORIDAD</th>
+                      <th>EVIDENCIAS</th>
                       <th>CERRAR</th>
                       <th>REASIGNACION</th>
                    </tr>
@@ -29,6 +31,7 @@
                             <td>{{$micaso->AREA}}</td>
                             <td>{{$micaso->DESCRIPTION}}</td>
                             <td>{{$micaso->SOLICITANTE}}</td>
+                            <td>{{$micaso->created_at}}</td>
                             @if ($micaso->PRIORIDAD == "BAJA")
                             <td><span class="badge rounded-pill bg-success">{{$micaso->PRIORIDAD}}</span></td>
                             @else
@@ -40,10 +43,18 @@
                                
                                @endif
                             @endif
+
+                            
+                              @if ($micaso->IMAGENEVIDENCIA == NULL or $micaso->IMAGENEVIDENCIA == "")
+                                 <td>No hay Evidencia para mostrar</td>
+                              @else
+                                 <td><a class="btn btn-info btn-sm" href="/dash/casos/{{$micaso->id}}/edit/image"> MOSTRAR </a></td>
+                              @endif
+                            
                             
                             <td><a href="/dash/casos/miscasos/{{$micaso->id}}/solucionarCaso" class="btn btn-success btn-sm">SOLUCIONAR</a></td>
                               <td>
-                                 @if(auth()->user()->name == "TECNOLOGÍA")
+                                 @if(auth()->user()->admin == "TECNOLOGÍA")
                                     <a href="/dash/casos/{{$micaso->id}}/reasignar" class="btn btn-info btn-sm">REASIGNAR</a>
                                  @else
                                     <p>No disponible</p>

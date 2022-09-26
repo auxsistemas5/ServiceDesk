@@ -8,15 +8,7 @@
                 <h2><b>ESTADISTICAS</b></h3>
                     
             </div>
-            <div class="row">
-                <div class="col-md-6">
-        
-                    <p>El total de casos cerrados hasta hoy: {{$total}}</p>
-                </div>
-                <div class="col-md-6">
-                    <p>Casos cerrados este mes: {{$julio}}</p>
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col-md-5">
                     <H4><b>REPORTE ANUAL DE CASOS</b></H4>
@@ -32,21 +24,190 @@
                     </div>
                 </div>
             </div>
-            <div hidden class="valores por mes">
-                <input id="enero" value="{{$enero}}">
-                <input id="febrero" value="{{$febrero}}">
-                <input id="marzo" value="{{$marzo}}">
-                <input id="julio" value="{{$julio}}">
-            </div> <br>
-        
+            <BR></BR>
             <div class="row">
-                <div class="col-md-4">
-                    <a href="/reporte/casos/exportar" class="btn btn-secondary btn-small">EXPORTAR CASOS CERRADOS POR MES PDF</a> <br>
-                </div>
-                <div class="col-md-4">
-                    <a href="/reporte/casos/exportarExcel" class="btn btn-secondary btn-small">EXPORTAR DATOS A EXCEL</a>
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class='table' border='1' style='WIDTH:100%'>
+                            <thead style='background-color: orange'>
+                                <tr style='text-align:center'>
+                                    <td ><B>PERSONA</B></td>
+                                    <td ><B>TICKETS ABIERTOS</B></td>
+                                    <td ><B>TICKETS CERRADOS</B></td>
+                                    <td><B>TOTAL DE CASOS</B></td>
+                                    <td><B>PORCENTAJE DE CUMPLIMIENTO</B></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style='text-align:center'>
+                                    <td>BRUCER LEE RONCALLO</td>
+                                    <td>{{$abierto1}}</td>
+                                    <td>{{$cerrado1}}</td>
+                                    <td> {{$total1}}</td>
+                                    <td>{{round($cerrado1 * 100 / $total1, 2)}}%</td>
+                                </tr>
+                                <tr style='text-align:center'>
+                                    <td>JARLEY ESTIVERD SALDARIAGA </td>
+                                    <td>{{$abierto2}}</td>
+                                    <td>{{$cerrado2}}</td>
+                                    <td> {{$total2}}</td>
+                                    <td>{{round($cerrado2 * 100 / $total2, 2)}}%</td>
+                                </tr>
+                                <tr style='text-align:center'>
+                                    <td>JEAN CARLOS MARIN</td>
+                                    <td>{{$abierto3}}</td>
+                                    <td>{{$cerrado3}}</td>
+                                    <td> {{$total3}}</td>
+                                    <td>{{round($cerrado3 * 100 / $total3, 2)}}%</td>
+                                </tr>
+                                <tr style='text-align:center'>
+                                    <td>JUAN DAVID VALENCIA</td>
+                                    <td>{{$abierto4}}</td>
+                                    <td>{{$cerrado4}}</td>
+                                    <td> {{$total4}}</td>
+                                    <td>{{round($cerrado4 * 100 / $total4, 2)}}%</td>
+                                </tr>
+                                <tr style='text-align:center'>
+                                    <td>SOPORTE</td>
+                                    <td>{{$abierto5}}</td>
+                                    <td>{{$cerrado5}}</td>
+                                    <td> {{$total5}}</td>
+                                    <td>{{round($cerrado5 * 100 / $total5, 2)}}%</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <br> 
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><B>CASOS POR SU TIPIFICACIÓN</B></h4>
+                    <div class="table-responsive">
+                        <table class='table'  border='1' style='WIDTH:100%'>
+                            <thead style='background-color: aquamarine; color:black;text-align:center;'>
+                                <tr >
+                                    <th>TIPIFICACIÓN</th>
+                                    <th>ABIERTOS</th>
+                                    <TH>CERRADOS</TH>
+                                    <th>TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody style='text-align:center'>
+                                <tr>
+                                    <td>DINAMICA</td>
+                                    <td>{{$tipiabierto1}}</td>
+                                    <td>{{$tipicerrado1}}</td>
+                                    <td>{{$tipificado1}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>IMPRESORAS</td>
+                                    <td>{{$tipiabierto2}}</td>
+                                    <td>{{$tipicerrado2}}</td>
+                                    <td>{{$tipificado2}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>ESCANER</td>
+                                    <td>{{$tipiabierto3}}</td>
+                                    <td>{{$tipicerrado3}}</td>
+                                    <td>{{$tipificado3}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>EQUIPOS</td>
+                                    <td>{{$tipiabierto4}}</td>
+                                    <td>{{$tipicerrado4}}</td>
+                                    <td>{{$tipificado4}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>CAMARAS</td>
+                                    <td>{{$tipiabierto5}}</td>
+                                    <td>{{$tipicerrado5}}</td>
+                                    <td>{{$tipificado5}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>CORREOS</td>
+                                    <td>{{$tipiabierto6}}</td>
+                                    <td>{{$tipicerrado6}}</td>
+                                    <td>{{$tipificado6}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>CREACIÓN USUARIOS</td>
+                                    <td>{{$tipiabierto7}}</td>
+                                    <td>{{$tipicerrado7}}</td>
+                                    <td>{{$tipificado7}}</td>
+                                </tr>
+                                <tr>
+                                    <td>INTRANET</td>
+                                    <td>{{$tipiabierto8}}</td>
+                                    <td>{{$tipicerrado8}}</td>
+                                    <td>{{$tipificado8}}</td>
+                                </tr>
+                                <tr>
+                                    <td>TELEFONIA</td>
+                                    <td>{{$tipiabierto9}}</td>
+                                    <td>{{$tipicerrado9}}</td>
+                                    <td>{{$tipificado9}}</td>
+                                </tr>
+                                <tr>
+                                    <td>SERVIDORES</td>
+                                    <td>{{$tipiabierto10}}</td>
+                                    <td>{{$tipicerrado10}}</td>
+                                    <td>{{$tipificado10}}</td>
+                                </tr>
+                                <tr>
+                                    <td>VARIOS(Switch, Informes, Convertir Archivos, VPN, Puntos de Red, SAIA)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{$septiembre-$totalCasos}}</td>
+                                </tr>
+                                <tr>
+                                    <td>TOTAL DE CASOS</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{$septiembre}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div hidden class="valores por mes">
+                <input id="julio" value="{{$julio}}">
+                <input id="agosto" value="{{$agosto}}">
+                <input id="septiembre" value="{{$septiembre}}">
+
+                <input id="usuario1" value="{{$usuario1}}">
+                <input id="usuario2" value="{{$usuario2}}">
+                <input id="usuario3" value="{{$usuario3}}">
+                <input id="usuario4" value="{{$usuario4}}">
+                <input id="usuario5" value="{{$usuario5}}">
+
+            </div> <br>
+
+            <div hidden class="valores por mes">
+                
+
+
+
+                
+
+            </div>
+        
+            <div class="row">
+                <div class="col-md-12">
+
+                    <a class='btn btn-warning form-control' href="">GENERAR REPORTE(EN MANTENIMIENTO)</a>
+                </div>
+            </div>
+            
+           
         @else
         
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -76,34 +237,40 @@
         //grafica los valores segun el mes dentro del grafico
         const ctx = document.getElementById('myChart').getContext('2d');
         const usr = document.getElementById('users').getContext('2d');
+    
 
         var julio = document.getElementById('julio').value;
+        var agosto = document.getElementById('agosto').value;
+        var septiembre = document.getElementById('septiembre').value;
+
+        var usuario5 = document.getElementById('usuario5').value;
+        var usuario4 = document.getElementById('usuario4').value;
+        var usuario3 = document.getElementById('usuario3').value;
+        var usuario2 = document.getElementById('usuario2').value;
+        var usuario1 = document.getElementById('usuario1').value;
+
+        
+
 
         const myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['JULIO'],
+                labels: ['JULIO','AGOSTO','SEPTIEMBRE'],
                 datasets: [{
                     label: 'CASOS SOLUCIONADOS POR MES',
-                    data: [13],
+                    data: [julio,agosto,septiembre],
                     backgroundColor: [
                         'rgba(255, 45, 0)',
                         'rgba(0, 128, 255 )',
-                        'rgba(255, 243, 0 )',
                         'rgba(101, 194, 44 )',
+                        'rgba(255, 243, 0 )',
                         'rgba(142, 44, 194 )',
                         'rgba(246, 173, 18 )',
-                        'rgba(246, 18, 94 )'
+                        'rgba(246, 18, 94 )',
+                        'rgba(239, 169 ,74)',
+                        'rgba(194, 176 ,120)'
                     ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
+                   
                 }]
             },
             options: {
@@ -115,26 +282,26 @@
             }
         });
 
+        
+
         const users = new Chart(usr, {
             type: 'pie',
             data: {
-                labels: ['BRUCER BRONCALLO', 'JUAN VALENCIA', 'JARLEY SALDARRIAGA'],
+                labels: ['BRUCER RONCALLO', 'JUAN VALENCIA', 'JARLEY SALDARRIAGA','SOPORTE','JEAN CARLOS MARIN OSPINA'],
                 datasets: [{
                     label: 'CASOS SOLUCIONADOS POR SOPORTE',
-                    data: [enero, 8, 7],
+                    data: [usuario2, usuario1, usuario3, usuario4,usuario5],
                     backgroundColor: [
                         'rgba(18, 246, 153 )',
                         'rgba(92, 128, 201 )',
-                        'rgba(246, 187, 18  )'
+                        'rgba(246, 187, 18  )',
+                        'rgba(240, 120, 120 )',
+                        'rgba(255, 87, 51)'
                        
                     ],
                     
-                    borderColor: [
-                        'rgba(72, 180, 124 )',
-                        'rgba(46, 80, 149  )',
-                        'rgba(222, 195, 26 )'
-                    ],
-                    borderWidth: 1
+                    
+                    
                 }]
             },
     

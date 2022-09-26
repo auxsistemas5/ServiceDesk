@@ -98,6 +98,11 @@ class CasoController extends Controller
         $caso->AREA = $request->get('AREA');
         $caso->AREADESTINO = $request->get('AREADESTINO');
         $caso->TIPODAÑO = $request->get('TIPODAÑO');
+
+        if($caso->AREADESTINO == 'SOPORTE'){
+            $caso->USUARIOASIGNADO = 'Soporte';
+        }
+
         //establece el formato de hora
 
         if($request->file('IMAGENEVIDENCIA') != null){
@@ -270,7 +275,7 @@ class CasoController extends Controller
         date_default_timezone_set('America/Bogota');
 
         //se organiza los casos cerrados desde el cerrado recien hasta el primero en cerrar//
-        $casoscerrados = Caso::where('ESTADO','Cerrado')->where('AREADESTINO','TECNOLOGÍA')->orwhere('AREADESTINO','Soporte')->orderBy('updated_at', 'DESC')->get();
+        $casoscerrados = Caso::where('ESTADO','Cerrado')->where('AREADESTINO','TECNOLOGÍA')->orwhere('AREADESTINO','Soporte')->orderBy('id', 'DESC')->get();
         
         $contador = Caso::where('ESTADO','Cerrado')->where('AREADESTINO','TECNOLOGÍA')->orwhere('AREADESTINO','Soporte')->orderBy('updated_at', 'DESC')->get()->count();
         return view('casos.casoscerrados', ['casoscerrados' => $casoscerrados, 'contador' => $contador]);
@@ -304,5 +309,4 @@ class CasoController extends Controller
         return redirect('/estadisticas/ver');
     }
 
-    
 }
